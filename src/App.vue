@@ -1,32 +1,11 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<template lang="pug">
+v-app
+  v-app-bar(app color='primary' dark)
+    v-toolbar-title 聊天室
+    v-spacer
+    v-btn(text to='login' v-if='!user.isLogin') 登入
+    v-btn(text to='/register' v-if='!user.isLogin') 註冊
+    span(v-else) {{ user.account }}
+  v-main
+    router-view
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
